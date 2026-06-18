@@ -30,6 +30,8 @@ async function _handleTodoAdd(){
     const todoField = document.getElementById('todo-input') as HTMLInputElement
     const todo = todoField.value
 
+    if (!todo) return
+
     try{
         let res = await axios.post("/todo", {
             todo
