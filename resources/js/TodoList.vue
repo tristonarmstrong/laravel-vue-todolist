@@ -100,7 +100,7 @@ async function _toggleTodo(todo: Todo) {
     </div>
     <div class="flex gap-1">
         <input name="todo" type="text" id="todo-input" placeholder="Take dogs out to ..." class="border-b-1 border-b-white/30 rounded-b-none px-4 py-2 rounded-lg text-white w-full flex-12"/>
-        <button id="todo-add-btn" @click="_handleTodoAdd" type="submit" class="flex-1 bg-green-500/30 px-2 py-1 text-green-500 rounded-lg cursor-pointer hover:bg-green-500/20">send</button>
+        <button id="todo-add-btn" @click="_handleTodoAdd" type="submit" class="flex-1 bg-green-500/30 px-2 py-1 text-green-500 rounded-lg cursor-pointer hover:bg-green-500/35 transition-all">send</button>
     </div>
     <br/>
     <p v-if="!todos.length" class="bg-white/3 text-white/30 px-4 py-2 rounded-lg flex justify-center font-bold">
@@ -109,10 +109,10 @@ async function _toggleTodo(todo: Todo) {
 
     <div v-if="!!todos.length" class="flex flex-col gap-2">
         <div v-for="todo of todos" class=" flex gap-2 text-white/50 w-full">
-            <div @click="() => _toggleTodo(todo)" :class="{'bg-white/3': !!todo.completed, 'bg-white/10': !todo.completed}" class=" px-2 py-1 rounded-lg flex-12 flex gap-2 cursor-pointer" >
+            <div @click="() => _toggleTodo(todo)" :class="{'bg-white/3': !!todo.completed, 'bg-white/10': !todo.completed}" class=" px-2 py-1 rounded-lg flex-12 flex gap-2 cursor-pointer hover:brightness-200" >
                 <p>{{todo.title}}</p>
             </div>
-            <button @click="() => _deleteTodo(todo)" class="bg-red-500/30 flex-1 rounded-lg text-red-500 cursor-pointer hover:bg-red-500/20">X</button>
+            <button @click="() => _deleteTodo(todo)" class="bg-red-500/30 flex-1 rounded-lg text-red-500 cursor-pointer hover:bg-red-500/35 transition-all">X</button>
         </div>
     </div>
 </div>

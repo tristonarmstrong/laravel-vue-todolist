@@ -19,7 +19,7 @@
                 @csrf
                 <input id="email" name="email" type="email" placeholder="Email" class="bg-white/10 px-4 py-2 rounded-lg text-white"/>
                 <input id="password" name="password" type="Password" placeholder="Password" class="bg-white/10 px-4 py-2 rounded-lg text-white"/>
-                <button type="submit" class="bg-red-500/30 rounded-md px-3 py-1 font-bold text-red-500 flex justify-center" href="/login">
+                <button type="submit" class="bg-green-500/30 rounded-md px-3 py-1 font-bold text-green-500 flex justify-center hover:bg-green-500/35 cursor-pointer" href="/login">
                     Login
                 </button>
             </form>
