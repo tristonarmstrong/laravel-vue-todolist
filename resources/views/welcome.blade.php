@@ -10,7 +10,7 @@
         @vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
 
-    <body class="bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+    <body class="bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center min-h-screen flex-col">
         @auth
             <div class="">
                 <div id="app"></div>
