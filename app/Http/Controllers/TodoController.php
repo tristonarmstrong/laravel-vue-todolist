@@ -73,4 +73,39 @@ class TodoController extends Controller
         $todo->delete();
         return response()->json(null, 204);
     }
+
+    public function trash(Request $request)
+    {
+        $user = $request->user();
+        $trashedTodos = Todo::onlyTrashed()
+            ->where('todos.user_id', $user->id)
+            ->get();
+        return response()->json($trashedTodos);
+    }
+
+    public function restore(Request $request, $todo)
+    {
+        $restoredTodo = Todo::onlyTrashed()
+            ->where('todo_id', $todo)
+            ->where('user_id', $request->user()->id)
+            ->firstOrFail();
+
+        $restoredTodo->restore();
+
+        return response()->json($restoredTodo);
+    }
+
+    public function forceDelete(Request $request, $todo)
+    {
+        $todo = Todo::withTrashed()
+            ->where('todo_id', $todo)
+            ->where('user_id', $request->user()->id)
+            ->firstOrFail();
+
+        $todo->forceDelete();
+
+        return response()->json([
+            'message' => 'Todo permanently deleted',
+        ]);
+    }
 }
