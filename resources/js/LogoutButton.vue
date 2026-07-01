@@ -12,7 +12,7 @@ async function _handleLogout(){
 </script>
 
 <template>
-    <button @click="_handleLogout" type="button" class=" logout-btn bg-red-500/30 text-red-500 font-bold px-3 py-1 rounded-lg cursor-pointer relative hover:bg-red-500/35  transition-all">
+    <button @click="_handleLogout" type="button" class=" logout-btn hover:bg-red-500/10 text-red-500 font-bold px-3 py-1 rounded-lg cursor-pointer relative transition-all">
         Logout
     </button>
 </template>

@@ -1,9 +1,16 @@
 import  { createApp } from 'vue'
 import App from './App.vue'
 import axios from "axios";
+import router from './router'
+
+/* FILE NOTE
+ * This file is a mount file thats run before the frontend library is instantiated and used.
+ *
+ * Usually used to setup stuff, e.g. we are setting up default headers and interceptors for axios
+*/
 
 axios.defaults.headers.common['Accept'] = 'application/json'
-axios.defaults.headers.common['X-Request-With'] = 'XMLHttpRequest'
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.interceptors.response.use(
     (response) => response, // Let successful requests pass right through
     (error) => {
@@ -23,4 +30,5 @@ axios.interceptors.response.use(
 )
 
 const app = createApp(App)
+app.use(router)
 app.mount('#app')
