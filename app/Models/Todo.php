@@ -16,6 +16,7 @@ class Todo extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
+    /** protected fillable is a whitelist for mass asignment*/
     protected $fillable = [
         'title',
         'completed'

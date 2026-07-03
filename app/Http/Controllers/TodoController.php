@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
-use Illuminate\Container\Attributes\Log;
 use Illuminate\Http\Request;
-use Monolog\Logger;
-use function Psy\debug;
 
 class TodoController extends Controller
 {
@@ -25,6 +22,7 @@ class TodoController extends Controller
      */
     public function create(Request $request)
     {
+        // TODO: should probably be in store instead
         $todo = $request->user()->todos()->create([
             'title' => $request->todo,
             'completed' => false,
@@ -61,8 +59,19 @@ class TodoController extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        $todo->update($request->all());
-        return response()->json($todo);
+        $validated = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'completed' => ['required', 'boolean'],
+        ]);
+
+        abort_unless($request->user()->id === $todo->user_id, 403);
+
+        $todo->update([
+            'title' => $validated['title'],
+            'completed' => $validated['completed'],
+        ]);
+
+        return response()->json($todo->fresh());
     }
 
     /**
